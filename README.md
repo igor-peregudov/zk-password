@@ -1,6 +1,6 @@
 # zk-password
 
-Zero-Knowledge password verification SDK using Noir + Poseidon2 hash + Barretenberg.
+Proof of Concept — Zero-Knowledge password verification SDK using Noir + Poseidon2 hash + Barretenberg.
 
 This SDK allows clients to prove knowledge of a password without revealing it to the backend using zk-SNARKs.
 
