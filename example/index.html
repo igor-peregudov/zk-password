@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>zk-password Test</title>
+</head>
+<body>
+<h1>zk-password Test</h1>
+
+<div>
+    <label>
+        Password:
+        <input type="text" id="password" />
+    </label>
+</div>
+<div>
+    <label>
+        User Tag:
+        <input type="text" id="userTag" />
+    </label>
+</div>
+<div>
+    <label>
+        Nonce:
+        <input type="text" id="nonce" />
+    </label>
+</div>
+<div>
+    <button id="registerBtn">Register (hash + salt)</button>
+    <button id="loginBtn">Login (ZK proof)</button>
+</div>
+
+<pre id="output"></pre>
+
+<script type="module">
+    import { ZkPassword, verifyProof } from '../dist/zk-password.js';
+
+    const passwordInput = document.getElementById('password');
+    const userTagInput = document.getElementById('userTag');
+    const nonceInput = document.getElementById('nonce');
+    const output = document.getElementById('output');
+
+    const zk = await ZkPassword.init();
+
+    let storedSalt = '';
+    let storedHash = '';
+
+    document.getElementById('registerBtn').addEventListener('click', async () => {
+        try {
+            const pw = passwordInput.value;
+            const tag = userTagInput.value;
+
+            const { passwordHash, salt } = await zk.register(pw, tag);
+            storedSalt = salt;
+            storedHash = passwordHash;
+
+            output.textContent = `Registered:\nHash: ${passwordHash}\nSalt: ${salt}`;
+        } catch (err) {
+            output.textContent = `Register Error:\n${err.message}`;
+        }
+    });
+
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+        try {
+            const pw = passwordInput.value;
+            const tag = userTagInput.value;
+            const nonce = BigInt(nonceInput.value);
+
+            if (!storedSalt) {
+                output.textContent = "Error: no salt stored. Please register first.";
+                return;
+            }
+
+            const result = await zk.login(pw, tag, storedSalt, nonce);
+
+            output.textContent = `Proof:\n${JSON.stringify(result.publicSignals, null, 2)}`;
+
+            const isValid = await verifyProof(result.proof);
+            console.log("Proof valid?", isValid);
+        } catch (err) {
+            output.textContent = `Login Error:\n${err.message}`;
+        }
+    });
+</script>
+</body>
+</html>

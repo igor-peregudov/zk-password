@@ -1,0 +1,49 @@
+{
+  "name": "zk-password",
+  "version": "0.1.0",
+  "description": "Zero-Knowledge password authentication using Noir and Poseidon2.",
+  "scripts": {
+    "types": "tsc -p tsconfig.build.json",
+    "build": "vite build && npm run types",
+    "build:zk": "cd circuits && nargo compile",
+    "clean:zk": "node scripts/clean_zk_json.cjs",
+    "prepare:zk": "npm run build:zk && npm run clean:zk"
+  },
+  "main": "./dist/zk-password.js",
+  "types": "./dist/zk-password.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/zk-password.js",
+      "types": "./dist/zk-password.d.ts"
+    }
+  },
+  "type": "module",
+  "keywords": [
+    "zk",
+    "password",
+    "noir",
+    "zero-knowledge",
+    "authentication"
+  ],
+  "author": "Igor Peregudov",
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@10.12.1",
+  "dependencies": {
+    "@aztec/bb.js": "0.84.0",
+    "@noir-lang/noir_js": "1.0.0-beta.6",
+    "argon2-browser": "1.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igor-peregudov/zk-password"
+  },
+  "devDependencies": {
+    "@types/argon2-browser": "1.18.4",
+    "@types/node": "24.0.3",
+    "prettier": "3.5.3",
+    "typescript": "5.8.3",
+    "vite": "6.3.5",
+    "vite-plugin-top-level-await": "1.5.0",
+    "vite-plugin-wasm": "3.4.1"
+  }
+}

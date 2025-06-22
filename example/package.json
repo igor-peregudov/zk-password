@@ -1,0 +1,19 @@
+{
+  "name": "zk-password-test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "6.3.5",
+    "vite-plugin-top-level-await": "1.5.0",
+    "vite-plugin-wasm": "3.4.1"
+  },
+  "dependencies": {
+    "@aztec/bb.js": "0.84.0",
+    "@noir-lang/noir_js": "1.0.0-beta.6",
+    "argon2-browser": "1.18.0"
+  }
+}

@@ -1,0 +1,8 @@
+[package]
+name = "zk_password"
+type = "bin"
+version = "0.1.0"
+authors = ["Igor Peregudov <igor.peregudov93@gmail.com>"]
+
+[dependencies]
+poseidon = { git = "https://github.com/noir-lang/poseidon", tag = "v0.1.1" }
