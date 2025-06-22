@@ -1,8 +1,8 @@
 # zk-password
 
-Zero-Knowledge password verification using Noir + Poseidon2 hash + Barretenberg.
+Zero-Knowledge password verification SDK using Noir + Poseidon2 hash + Barretenberg.
 
-This library allows clients to prove knowledge of a password without revealing it to the backend using zk-SNARKs.
+This SDK allows clients to prove knowledge of a password without revealing it to the backend using zk-SNARKs.
 
 ---
 
@@ -160,8 +160,7 @@ app.post('/api/login-complete', async (req, res) => {
 ```json
 {
   "proof": {
-    "proof": ["0x...", "0x..."],
-    ...
+    "proof": ["0x...", "0x..."]
   },
   "publicSignals": {
     "password_hash": "...",
@@ -225,15 +224,17 @@ app.post('/api/login-complete', async (req, res) => {
 
 ---
 
-▶️ Running the Example
+## ▶️ Running the Example
 
-To test the library in a real browser environment:
+To test the SDK in a real browser environment:
 
+```bash
 cd example
 npm install
 npm run dev
+```
 
-This will start a Vite development server.You can interact with the zk-password functionality via the provided HTML form at http://localhost:5173.
+Then open [http://localhost:5173](http://localhost:5173) to interact with the form.
 
 ---
 
