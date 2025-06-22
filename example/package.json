@@ -14,6 +14,7 @@
   "dependencies": {
     "@aztec/bb.js": "0.84.0",
     "@noir-lang/noir_js": "1.0.0-beta.6",
-    "argon2-browser": "1.18.0"
+    "argon2-browser": "1.18.0",
+    "zk-password": "^0.1.0"
   }
 }

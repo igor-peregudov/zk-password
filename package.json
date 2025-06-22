@@ -2,6 +2,7 @@
   "name": "zk-password",
   "version": "0.1.0",
   "description": "Zero-Knowledge password authentication using Noir and Poseidon2.",
+  "files": ["dist"],
   "scripts": {
     "types": "tsc -p tsconfig.build.json",
     "build": "vite build && npm run types",
