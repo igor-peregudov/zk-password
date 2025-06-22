@@ -21,7 +21,7 @@ This library allows clients to prove knowledge of a password without revealing i
 ## ✨ Installation
 
 ```bash
-npm install zk-password
+npm install zk-password @aztec/bb.js@0.84.0 @noir-lang/noir_js@1.0.0-beta.6 argon2-browser@1.18.0
 ```
 
 > ✅ No need to manually compile Noir — `zk_password.json` is already bundled.
