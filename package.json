@@ -1,6 +1,6 @@
 {
   "name": "zk-password",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zero-Knowledge password authentication using Noir and Poseidon2.",
   "files": ["dist"],
   "scripts": {
