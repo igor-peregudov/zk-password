@@ -147,7 +147,7 @@ app.post('/api/login-complete', async (req, res) => {
 }
 ```
 
-3. Client inputs `password`, reuses `salt`, и получает `nonce`
+3. Client inputs `password`, reuses `salt`, и receives `nonce`
 4. Computes:
 
    * `preimage = Argon2(password, salt)`
